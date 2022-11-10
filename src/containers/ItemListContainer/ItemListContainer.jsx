@@ -1,23 +1,40 @@
-import React from "react";
-import { Carousel } from "../Carousel/Carousel";
-import "./ItemListContainer.css"
+import React, {useEffect, useState} from 'react';
+import './ItemListContainer.css';
+// import rawProducts from '../../data/products';
+import ItemList from '../../components/ItemList/ItemList';
+import { useParams } from 'react-router-dom';
+export default function ItemListContainer ({greeting}) {
+    const {categoryId} = useParams()
 
-const ItemListContainer = ({greeting}) => {
-    return(
-        <div className="ItemListContainer" style = {
-            {
-                backgroundImage : "url(https://p4.wallpaperbetter.com/wallpaper/392/8/990/vinyl-4k-desktop-background-wallpaper-preview.jpg)",
-                backgroundSize: "cover",
+    console.log(categoryId);
+
+    const [products, setProducts] = useState([])
+    useEffect(()=> {
+        ( async ()=> {
+            try {
+                console.log(categoryId);
+                let response;
+                if (categoryId) {
+                    response = await fetch(`https://fakestoreapi.com/products/category/${categoryId}`);
+                } else {
+                    response = await fetch(`https://fakestoreapi.com/products`);
+                }
+                console.log(response);
+                const data = await response.json();
+                console.log(data);
+                setProducts(data)
+            } catch (error) {
+                console.log(error);
             }
-            }>
-            
-            <h2 className="greeting"> {greeting} </h2>
-            <Carousel/>
+        })()
+    }, [categoryId])
 
-
-            
+    return (
+        <>
+        <div className='item-list-container'>
+                
         </div>
+        <ItemList products={products}/>
+        </>
     )
-
-} 
-export default ItemListContainer ;
+}

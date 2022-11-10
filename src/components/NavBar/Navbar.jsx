@@ -1,36 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
-import { Title } from "../Title/Title";
-
 import './Navbar.css';
+import Title from "../Title/Title"
+
 const NavBar = () => {
+
     return (
-        <ul>
-
-            <Title/>
-            <div>
-                <li>
-                    <a href="#Inicio">INICIO</a>
-                </li>
-                <li>
-                    <a href="#VINILOS">VINILOS</a>
-                </li>
-                <li>
-                    <a href="DISCOS">DISCOS</a>
-                </li>
-                <li>
-                    <a href="#POSTERS">POSTERS</a>
-                </li>
-                <li>
-                    <a href="#NOSOTROS">NOSOTROS</a>
-                </li>
-            </div>
-            
-            <CartWidget></CartWidget>
-
-        </ul>
         
+        <ul>
+            <Title></Title>
+            <div>
+            <li>
+                <Link to="/">Home</Link>
+            </li>
+            <li>
+                <Link to="/category/men's clothing">Man</Link>
+            </li>
+            <li>
+                <Link to="/category/women's clothing">Women</Link>
+            </li>
+            </div>
+            <CartWidget />
+        </ul>
+    );
+};
 
-    )
-}
 export default NavBar;

@@ -1,8 +1,9 @@
 import React from 'react'
 import "./Title.css"
-export const Title = () => {
+const Title = () => {
   return (
-    <div className='titulo'>VIN</div>
+    <div className='titulo'>BOOP</div>
     
   )
 }
+export default Title;

@@ -1,22 +1,23 @@
 
 ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 1px solid #e7e7e7;
-  background-color: #f3f3f3;
+  border: 1px solid #ffffff;
+  background-color: #fffcfc;
 }
 li {
   float: left;
+  
 }
 li a {
   display: block;
-  color: #666;
+  color: #CB4F24;
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 40px;
   text-decoration: none;
 }
 li a:hover {

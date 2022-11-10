@@ -1,16 +1,10 @@
 import './App.css';
-
-import NavBar from './components/NavBar/Navbar';
-import ItemListContainer from './containers/ItemListContainer/ItemListContainer';
+import Router from './Routes/Routes';
 
 function App() {
+
   return (
-    <div className="App">
-      <NavBar/>
-      <ItemListContainer greeting={"Se vienen cositas..."} />
-      
-  
-    </div>
+    <Router/>
   );
 }
 
