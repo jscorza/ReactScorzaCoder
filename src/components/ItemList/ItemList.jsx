@@ -1,6 +1,6 @@
 import React from 'react'
 import Item from '../Item/Item'
-<link rel="stylesheet" href="./ItemList.scss" />
+import "./ItemList.css" ;
 
 //Se encarga de hacer el map con los productos
 const ItemList = ({products}) => {

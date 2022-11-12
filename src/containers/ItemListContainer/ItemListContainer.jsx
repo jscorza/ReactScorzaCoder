@@ -3,6 +3,7 @@ import './ItemListContainer.css';
 // import rawProducts from '../../data/products';
 import ItemList from '../../components/ItemList/ItemList';
 import { useParams } from 'react-router-dom';
+import { RingLoader } from 'react-spinners';
 export default function ItemListContainer ({greeting}) {
     const {categoryId} = useParams()
 
@@ -30,11 +31,11 @@ export default function ItemListContainer ({greeting}) {
     }, [categoryId])
 
     return (
-        <>
+        
         <div className='item-list-container'>
-                
+            {products.length ? <ItemList products={products}/> : <RingLoader size={120}> </RingLoader> }   
         </div>
-        <ItemList products={products}/>
-        </>
+        
+        
     )
 }

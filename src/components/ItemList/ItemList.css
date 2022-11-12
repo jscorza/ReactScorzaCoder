@@ -1,9 +1,11 @@
 .lista{
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    padding: 30px;
     justify-content: center;
+    align-items: center;
     gap: 20px;
+    padding: 30px;
+    flex-wrap: wrap;
+
 }
