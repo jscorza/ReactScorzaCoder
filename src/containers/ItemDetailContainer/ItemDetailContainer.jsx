@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
+import { RingLoader } from 'react-spinners';
+
 
 const ItemDetailContainer = () => {
     const {id} = useParams()
-    const [product, setProduct] = useState({})
+    const [product, setProduct] = useState(null)
 
     useEffect(() => {
         ( async ()=> {
@@ -20,7 +22,7 @@ const ItemDetailContainer = () => {
             })()
         }, [id])
         
-    return <ItemDetail product={product}/>
+    return(product ? <ItemDetail product={product}/> :  <RingLoader size={120}> </RingLoader>) 
 };
 
 export default ItemDetailContainer;
