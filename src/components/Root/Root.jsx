@@ -7,7 +7,29 @@ const Root = () => {
     <div>
         <NavBar/>
         <Outlet/>
-        <h2>Footer</h2>
+        <footer style={{
+          backgroundColor: 'gray',
+          display: "flex",
+          flexDirection:"row",
+          fontSize: "20px",
+          justifyContent: "space-around",
+          position: "static"
+          ,bottom:"0"
+          ,width: "100% vw"
+        
+          
+        }}> 
+        <p>
+          BOOP 
+        </p>
+        <p>
+          Contact
+        </p>
+        <p>
+          Media
+        </p>
+          
+        </footer>
     </div>
   )
 }

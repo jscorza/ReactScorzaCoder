@@ -1,13 +1,14 @@
 
 ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   border: 1px solid #ffffff;
   background-color: #fffcfc;
+  align-items: center;
 }
 li {
   float: left;
@@ -15,11 +16,13 @@ li {
 }
 li a {
   display: block;
-  color: #CB4F24;
+  color: #000000;
   text-align: center;
   padding: 10px 40px;
   text-decoration: none;
 }
 li a:hover {
   background-color: #ddd;
+  color: black;
 }
+

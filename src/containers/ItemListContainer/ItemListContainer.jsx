@@ -4,36 +4,55 @@ import './ItemListContainer.css';
 import ItemList from '../../components/ItemList/ItemList';
 import { useParams } from 'react-router-dom';
 import { RingLoader } from 'react-spinners';
+import { collection, query, where, getDocs } from "firebase/firestore";
+import {db} from "../../firebase/config"
 export default function ItemListContainer ({greeting}) {
     const {categoryId} = useParams()
 
     console.log(categoryId);
 
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(false);
+
     useEffect(()=> {
         ( async ()=> {
             try {
-                console.log(categoryId);
-                let response;
+                setLoading(true);
+                let q;
                 if (categoryId) {
-                    response = await fetch(`https://fakestoreapi.com/products/category/${categoryId}`);
+                    q = query(collection(db, "fakestoreProducts"), where("category", "==", categoryId))
                 } else {
-                    response = await fetch(`https://fakestoreapi.com/products`);
+                    q = query(collection(db, "fakestoreProducts"));
                 }
-                console.log(response);
-                const data = await response.json();
-                console.log(data);
-                setProducts(data)
+
+                //2do paso: realizar la query
+                const querySnapshot = await getDocs(q);
+                const productosFirebase = [];
+                querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                    console.log(doc.id, " => ", doc.data());
+                    productosFirebase.push({...doc.data(), id: doc.id})
+                });
+                setProducts(productosFirebase);
             } catch (error) {
                 console.log(error);
+            }finally {
+                setLoading(false)
             }
-        })()
-    }, [categoryId])
+        })();
+    }, [categoryId]);
+
+
+    const styless ={position: "relative",
+    marginTop: 150,
+    marginLeft: "50%"
+    
+}
 
     return (
         
         <div className='item-list-container'>
-            {products.length ? <ItemList products={products}/> : <RingLoader size={120}> </RingLoader> }   
+            {products.length  && !loading ?  <ItemList products={products}/> :   <RingLoader cssOverride={styless} size={150}> </RingLoader> }   
         </div>
         
         

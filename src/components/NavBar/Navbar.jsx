@@ -3,13 +3,19 @@ import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
 import './Navbar.css';
 import Title from "../Title/Title"
+import Logo from "../Logo/Logo"
 
 const NavBar = () => {
 
     return (
         
         <ul>
-            <Title></Title>
+            <div style={{display: "flex",
+                         flexDirection:"row"
+                        ,alignItems: "center"
+                    }}
+            > <Logo></Logo> <Title></Title></div>
+            
             <div>
             <li>
                 <Link to="/">Home</Link>
