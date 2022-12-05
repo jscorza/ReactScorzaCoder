@@ -4,7 +4,7 @@ import {Shop} from '../../contexts/Shop';
 import generateOrderObject from '../../services/generateOrderObject';
 import { doc, getDoc, updateDoc, collection, addDoc } from "firebase/firestore";
 import { db } from '../../firebase/config';
-import Formulario from '../../components/ChOut/ChOut';
+import Formulario from '../../components/CheckOut/CheckOut';
 
 const CartContainer = () => {
     const {products,calculateTotal } = useContext(Shop)
@@ -82,7 +82,8 @@ const CartContainer = () => {
             {products.map(product => {
                 return <CartItem key={product.id} item={product}/>
             })}
-            <Formulario/>
+            <Formulario/> 
+            <p>Valor total de la compra: {calculateTotal()}</p>
             <button className='btn btn-success p-3' onClick={confirmPurchase}>Confirmar compra</button>
         </div>
     )

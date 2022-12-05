@@ -15,10 +15,10 @@ function ItemCount({ onAdd, stock, initial }) {
             setCount(count - 1);
     };
     return <div>
-        <button onClick={onDecrement}>-</button>
+        <button style={{padding: "3px", margin: '7px'}} className="btn btn-3" onClick={onDecrement}>-</button>
         <span>{count}</span>
-        <button onClick={onPlus}>+</button>
-        <button onClick={() => onAdd(count)}>Confirm purchase</button>
+        <button style={{padding: "3px", margin: '7px'}}  className="btn btn-3"  onClick={onPlus}>+</button>
+        <button className=" btn btn-success btn-lg" onClick={() => onAdd(count)}>Confirm purchase</button>
     </div>;
 }
 

@@ -15,7 +15,7 @@ const Item = ({product}) => {
   return (
     <div className='card' onClick={navigateDetail}>
       <img style={{width: 100,height: 100}} src={product.image} alt="ropa"/>
-      <p key={product.id} > {product.title}, id: {product.id}</p>
+      <p key={product.id} > {product.title}</p>
     </div>
   )
 }
